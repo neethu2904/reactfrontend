@@ -59,5 +59,7 @@ export async function deleteEmployee(id: number) {
     }
   );
 
-  return response.json();
+  if (!response.ok) {
+    throw new Error("Unable to delete employee");
+  }
 }

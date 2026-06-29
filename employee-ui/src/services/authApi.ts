@@ -1,9 +1,18 @@
 const API_URL = "http://127.0.0.1:8000/api";
 
+type LoginResponse = {
+  message: string;
+  user: {
+    id: number;
+    name: string;
+    email: string;
+  };
+};
+
 export async function loginUser(credentials: {
   email: string;
   password: string;
-}) {
+}): Promise<LoginResponse> {
   const response = await fetch(`${API_URL}/login`, {
     method: "POST",
     headers: {
